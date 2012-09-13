@@ -53,6 +53,21 @@ MVVM = Model View ViewModel
 	</div>
 
 
+	<div id="container4" class="container">
+		<label>
+			<input data-bind="value: r" type="range" min="0" max="255"/>
+			<span data-bind="text: 'r: ' + r()"></span></label><br/>
+		<label>
+			<input data-bind="value: g" type="range" min="0" max="255"/>
+			<span data-bind="text: 'g: ' + g()"></span></label><br/>
+		<label>
+			<input data-bind="value: b" type="range" min="0" max="255"/>
+			<span data-bind="text: 'b: ' + b()"></span></label><br/>
+
+		<canvas data-bind="canvasColor: [r(), g(), b()]" width="200" height="200" ></canvas>
+	</div>
+
+
 	<!-- build:js scripts/amd-app.js -->
 	<script data-main="scripts/main" src="scripts/vendor/require.js"></script>
 	<!-- endbuild -->
