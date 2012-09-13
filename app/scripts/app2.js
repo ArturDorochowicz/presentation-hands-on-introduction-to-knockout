@@ -11,17 +11,18 @@ define(['jquery', 'ko'], function ($, ko) {
 
 	$.extend(MyViewModel.prototype, {
 		addBinding: function () {
+
 			ko.bindingHandlers.canvasColor = {
 				init: function (element, valueAccessor, allBindingsAccessor, context) {
-					var ctx = element.getContext('2d'),
-						values = ko.utils.unwrapObservable(valueAccessor());
+					var values = ko.utils.unwrapObservable(valueAccessor()),
+						ctx = element.getContext('2d');
 
 					ctx.fillStyle = 'rgb(' + values[0] + ', ' + values[1] + ', ' + values[2] + ')';
 					ctx.fillRect(0, 0, 200, 200);
 				},
 				update: function (element, valueAccessor, allBindingsAccessor, context) {
-					var ctx = element.getContext('2d'),
-						values = ko.utils.unwrapObservable(valueAccessor());
+					var values = ko.utils.unwrapObservable(valueAccessor()),
+						ctx = element.getContext('2d');
 
 					ctx.fillStyle = 'rgb(' + values[0] + ', ' + values[1] + ', ' + values[2] + ')';
 					ctx.fillRect(25, 25, 150, 150);

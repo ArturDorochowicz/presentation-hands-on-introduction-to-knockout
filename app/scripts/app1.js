@@ -2,6 +2,7 @@ define(['jquery', 'ko'], function ($, ko) {
 	"use strict";
 
 	function MyViewModel() {
+		//this.firstName = ko.observable();
 		//this.firstName = ko.observable('john');
 
 		//this.showFirstName();
@@ -29,7 +30,7 @@ define(['jquery', 'ko'], function ($, ko) {
 			}, this);
 
 			this.fullName.subscribe(function (value) {
-				console.log(this.fullName());
+				console.log(value);
 			}, this);
 
 			this.firstName('jane');
@@ -51,7 +52,7 @@ define(['jquery', 'ko'], function ($, ko) {
 			});
 
 			this.fullName.subscribe(function (value) {
-				console.log(this.fullName());
+				console.log(value);
 			}, this);
 
 			this.fullName('jd');
@@ -60,8 +61,8 @@ define(['jquery', 'ko'], function ($, ko) {
 		showPeople: function () {
 			this.people = ko.observableArray();
 
-			this.people.subscribe(function () {
-				console.log(arguments);
+			this.people.subscribe(function (value) {
+				console.log(value);
 			});
 
 			this.people.push('a');

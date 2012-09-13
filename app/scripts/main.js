@@ -8,7 +8,7 @@ require.config({
   }
 });
 
-require(['ko', 'jquery', 'app'], function (ko, $, app) {
+require(['ko', 'jquery'], function (ko, $) {
 	$(function () {
 		var module, containerId, container;
 
