@@ -9,14 +9,16 @@ require.config({
 });
 
 require(['ko', 'jquery', 'app'], function (ko, $, app) {
-	var module, container;
+	$(function () {
+		var module, containerId, container;
 
-	module = $(document.body).data('module');
-	container = $(document.body).data('container');
+		module = $(document.body).data('module');
+		containerId = $(document.body).data('container');
+		container = $(containerId ? '#' + containerId : '#container').show().get(0);
 
-	require([module || 'app'], function (vm) {
-		$(function () {
-			ko.applyBindings(vm, $(container ? '#' + container : '#container').show().get(0));
+		require([module || 'app'], function (vm) {
+			ko.applyBindings(vm, container);
 		});
 	});
 });
+
