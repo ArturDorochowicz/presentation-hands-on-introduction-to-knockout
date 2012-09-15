@@ -6,9 +6,20 @@ define(['jquery', 'ko'], function ($, ko) {
 		this.g = ko.observable(0);
 		this.b = ko.observable(0);
 
-		this.value = ko.computed(function () {
-			return 'rgb(' + this.r() + ', ' + this.g() + ', ' + this.b() + ')';
-		}, this);
+		this.value = ko.computed({
+			read: function () {
+				return 'rgb(' + this.r() + ', ' + this.g() + ', ' + this.b() + ')';
+			},
+			write: function (value) {
+				var b = (value & 255);
+				var g = ((value >> 8) & 255);
+				var r = ((value >> 16) & 255);
+				this.r(r);
+				this.g(g);
+				this.b(b);
+			},
+			owner: this
+		});
 	}
 
 	function MyViewModel() {
