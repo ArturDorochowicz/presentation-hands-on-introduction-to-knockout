@@ -80,6 +80,30 @@ MVVM = Model View ViewModel
 	</div>
 
 
+
+
+
+
+	<div id="container5" class="container">
+		<canvas height="50" data-bind="attr: {width: 50 * gradientStops().length }, cg: gradientStops" style="border: 1px solid #000"></canvas>
+		<br/>
+		<button type="button" data-bind="enable: canAddGradientStop, click: addGradientStop">Add</button>
+		<ol data-bind="foreach: gradientStops">
+			<li style="float:left;">
+				<label>
+					<input data-bind="value: r" type="range" min="0" max="255"/>
+					<span data-bind="text: 'r: ' + r()"></span></label><br/>
+				<label>
+					<input data-bind="value: g" type="range" min="0" max="255"/>
+					<span data-bind="text: 'g: ' + g()"></span></label><br/>
+				<label>
+					<input data-bind="value: b" type="range" min="0" max="255"/>
+					<span data-bind="text: 'b: ' + b()"></span></label><br/>
+				<button type="button" data-bind="click: $parent.removeGradientStop">Remove</button>
+			</li>
+		</ol>
+	</div>
+
 	<!-- build:js scripts/amd-app.js -->
 	<script data-main="scripts/main" src="scripts/vendor/require.js"></script>
 	<!-- endbuild -->
